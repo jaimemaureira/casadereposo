@@ -1,0 +1,36 @@
+<!-- masterbikes/templates/masterbikes/Vistas/feedback.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MasterBikes - Feedback</title>
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/stylesIncludes.css' %}">
+    <link rel="icon" href="{% static 'img/LogoMasterbike.jpeg' %}">
+</head>
+<body>
+
+    {% include 'masterbikes/includes/header.html' %}
+
+    <main class="main">
+        <div class="container">
+            <h2>Feedback</h2>
+            <a href="{% url 'feedback_create' %}" class="btn btn-primary">Enviar Feedback</a>
+            <div class="list-group mt-4">
+                <!-- Ejemplo de feedback -->
+                <a href="#" class="list-group-item list-group-item-action">Usuario 1 - Comentario - Calificación: 5</a>
+                <a href="#" class="list-group-item list-group-item-action">Usuario 2 - Comentario - Calificación: 4</a>
+                <a href="#" class="list-group-item list-group-item-action">Usuario 3 - Comentario - Calificación: 3</a>
+            </div>
+        </div>
+    </main>
+
+    {% include 'masterbikes/includes/footer.html' %}
+
+</body>
+</html>

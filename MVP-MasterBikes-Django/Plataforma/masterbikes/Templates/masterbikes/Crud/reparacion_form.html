@@ -1,0 +1,65 @@
+<!-- masterbikes/templates/masterbikes/reparacion_form.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Villa Retro - Solicitud Residencia</title>
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/stylesIncludes.css' %}">
+    <link rel="icon" href="{% static 'img/LogoMasterbike.jpeg' %}">
+</head>
+<body>
+
+    {% include 'masterbikes/includes/header.html' %}
+
+    <main class="main">
+        <div class="container">
+            <h2>Solicitud Residencia</h2>
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="bicicleta">Residencia</label>
+                    {{ form.bicicleta }}
+                </div>
+                <div class="form-group">
+                    <label for="descripcion">Descripción del Problema</label>
+                    {{ form.descripcion }}
+                </div>
+                <div class="form-group">
+                    <img id="bicicleta-imagen" class="bicicleta-imagen" src="" alt="Imagen de la bicicleta" style="display: none;">
+                </div>
+                <button type="submit" class="btn btn-primary">Solicitar Residencia</button>
+            </form>
+        </div>
+    </main>
+
+    {% include 'masterbikes/includes/footer.html' %}
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const bicicletaSelect = document.getElementById('id_bicicleta');
+            const bicicletaImagen = document.getElementById('bicicleta-imagen');
+
+            bicicletaSelect.addEventListener('change', function () {
+                const selectedOption = bicicletaSelect.options[bicicletaSelect.selectedIndex];
+                const imageUrl = bicicletaSelect.getAttribute(`data-image-url-${selectedOption.value}`);
+
+                if (imageUrl) {
+                    bicicletaImagen.src = imageUrl;
+                    bicicletaImagen.style.display = 'block';
+                } else {
+                    bicicletaImagen.style.display = 'none';
+                }
+            });
+
+            // Trigger change event to show image if already selected
+            bicicletaSelect.dispatchEvent(new Event('change'));
+        });
+    </script>
+</body>
+</html>

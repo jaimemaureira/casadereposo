@@ -1,0 +1,35 @@
+<!-- masterbikes/templates/masterbikes/Crud/eliminar_usuario.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eliminar Usuario</title>
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/stylesIncludes.css' %}">
+    <link rel="icon" href="{% static 'img/LogoMasterbike.jpeg' %}">
+</head>
+<body>
+
+    {% include 'masterbikes/includes/header.html' %}
+
+    <main class="main">
+        <div class="container mt-5">
+            <h2>Eliminar Usuario</h2>
+            <p>¿Estás seguro de que deseas eliminar al usuario <strong>{{ user.username }}</strong>?</p>
+            <form method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger">Eliminar</button>
+                <a href="{% url 'administracion' %}" class="btn btn-secondary">Cancelar</a>
+            </form>
+        </div>
+    </main>
+
+    {% include 'masterbikes/includes/footer.html' %}
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!-- masterbikes/templates/masterbikes/Vistas/bicicleta_detalle.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ bicicleta.nombre }} - "Villa Retro"</title>
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/stylesIncludes.css' %}">
+    <link rel="icon" href="{% static 'img/LogoMasterbike.jpeg' %}">
+</head>
+<body>
+
+    {% include 'masterbikes/includes/header.html' %}
+
+    <main class="main">
+        <div class="container">
+            <h2>{{ bicicleta.nombre }}</h2>
+            <div class="card mb-4">
+                <img src="{{ bicicleta.imagen.url }}" class="card-img-top" alt="{{ bicicleta.nombre }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ bicicleta.nombre }}</h5>
+                    <p class="card-text">{{ bicicleta.descripcion }}</p>
+                    <p class="card-text"><strong>Precio:</strong> ${{ bicicleta.precio }}</p>
+                </div>
+            </div>
+            <a href="{% url 'bicicletas' %}" class="btn btn-primary">Volver Atras</a>
+        </div>
+    </main>
+
+    {% include 'masterbikes/includes/footer.html' %}
+
+</body>
+</html>

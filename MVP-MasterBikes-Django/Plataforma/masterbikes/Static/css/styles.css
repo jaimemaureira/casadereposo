@@ -1,0 +1,335 @@
+/* masterbikes/static/css/styles.css */
+
+.carousel-inner img {
+    width: 100%;
+    height: auto;
+    max-height: 600px; /* Adjust this value to control the height */
+    object-fit: cover;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+}
+
+.carousel-indicators li {
+    background-color: #000;
+}
+
+.carousel-indicators .active {
+    background-color: #fff;
+}
+
+/* Custom carousel styling */
+.custom-carousel {
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5); /* Shadow effect on both sides */
+    border-radius: 15px; /* Rounded corners */
+    overflow: hidden;
+    margin: 20px auto; /* Center align */
+    max-width: 90%; /* Adjust width as needed */
+}
+
+.carousel-item img {
+    border-radius: 15px; /* Match the border radius of the carousel */
+}
+
+body {
+    background-color: #f0f8ff;
+    font-family: 'Arial', sans-serif;
+}
+
+.navbar {
+    background-color: #007bff;
+}
+
+
+.main {
+    padding: 20px;
+    background-color: #ffffff;
+}
+
+.footer {
+    background-color: #007bff;
+    color: #ffffff;
+    padding: 10px 0;
+}
+
+.jumbotron {
+    background-color: #007bff;
+    color: #ffffff;
+}
+
+.card {
+    margin-bottom: 20px;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+
+
+/* Headers */
+h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #000000;
+}
+
+/* Estilo para las imágenes de bicicletas */
+.bicicleta-imagen {
+    width: 50%;
+    object-fit: cover;
+}
+
+card-img-top{
+    width: 50%;
+}
+
+
+.banner-img {
+    width: 100%;
+    height: 350px;
+    display: block; /* Para eliminar cualquier espacio debajo de la imagen */
+    margin: 0; /* Para asegurarte de que no haya margen alrededor de la imagen */
+    padding: 0; /* Para asegurarte de que no haya padding alrededor de la imagen */
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    border: none;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+/* Cards */
+.card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    color: #000000;
+}
+
+.card-text {
+    margin-bottom: 15px;
+}
+
+/* Form Inputs */
+.form-control {
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
+}
+
+/* List Groups */
+.list-group-item {
+    border: none;
+    padding: 15px 20px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+
+
+
+
+/* Footer Styles */
+.footer-container {
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+.logofooter {
+    width: 100px;
+    height: 100px;
+    margin: auto;
+}
+
+.footer-text {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    font-weight: normal;
+    color: #fff;
+    margin-top: 10px;
+    padding: 10px 0;
+    line-height: 1.5;
+}
+
+.footer-card {
+    width: fit-content;
+    height: fit-content;
+    background-color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 25px 25px;
+    gap: 20px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.055);
+}
+
+.footer-icons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.footer-icons .icon-container {
+    width: 42px;
+    height: 42px;
+    background-color: rgb(44, 44, 44);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    overflow: hidden;
+    transition-duration: 0.3s;
+}
+
+.icon-instagram:hover {
+    background-color: #d62976;
+}
+
+.icon-twitter:hover {
+    background-color: #00acee;
+}
+
+.icon-linkedin:hover {
+    background-color: #0072b1;
+}
+
+.icon-whatsapp:hover {
+    background-color: #128c7e;
+}
+
+.icon-container:active {
+    transform: scale(0.9);
+    transition-duration: 0.3s;
+}
+
+.icon-svg {
+    width: 20px;
+    height: 20px;
+    fill: #fff;
+}
+
+.icon-container:hover .icon-svg {
+    animation: slide-in-top 0.3s both;
+}
+
+@keyframes slide-in-top {
+    0% {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+
+/* Base styles for custom buttons */
+.custom-btn {
+    display: inline-block;
+    padding: 5px 5px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Button styles for "btn-1" class */
+.btn-1 {
+    color: #fff;
+    background-color: #007bff;
+    border: 1px solid #007bff;
+}
+
+.btn-1:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Specific button styles for different actions */
+.search-button {
+    background-color: #28a745;
+    border: 1px solid #28a745;
+}
+
+.search-button:hover {
+    background-color: #218838;
+    border-color: #218838;
+}
+
+.login-button {
+    background-color: #ffc107;
+    border: 1px solid #ffc107;
+    color: #212529;
+}
+
+.login-button:hover {
+    background-color: #e0a800;
+    border-color: #d39e00;
+    color: #fff;
+}
+
+.register-button {
+    background-color: #17a2b8;
+    border: 1px solid #17a2b8;
+}
+
+.register-button:hover {
+    background-color: #117a8b;
+    border-color: #10707f;
+}
+
+/* Additional styles for better accessibility */
+.custom-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(38, 143, 255, 0.5);
+}

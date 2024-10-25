@@ -1,0 +1,41 @@
+<!-- masterbikes/templates/masterbikes/Crud/marcar_seguimiento.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marcar Seguimiento Historial Médico</title>
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/stylesIncludes.css' %}">
+    <link rel="icon" href="{% static 'img/LogoMasterbike.jpeg' %}">
+</head>
+<body>
+
+    {% include 'masterbikes/includes/header.html' %}
+
+    <main class="main">
+        <div class="container">
+            <h2>Marcar Seguimiento Historial Médico</h2>
+            <form method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="estado" class="form-label">Estado</label>
+                    <select id="estado" name="estado" class="form-select" required>
+                        <option value="Pendiente" {% if reparacion.estado == 'Pendiente' %}selected{% endif %}>Pendiente</option>
+                        <option value="En Proceso" {% if reparacion.estado == 'En Proceso' %}selected{% endif %}>En Proceso</option>
+                        <option value="Completada" {% if reparacion.estado == 'Completada' %}selected{% endif %}>Completada</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+            </form>
+        </div>
+    </main>
+
+    {% include 'masterbikes/includes/footer.html' %}
+
+</body>
+</html>

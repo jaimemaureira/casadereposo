@@ -1,0 +1,134 @@
+<!-- masterbikes/templates/masterbikes/Crud/crud.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Villa Retro - CRUD del Staff</title>
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/stylesIncludes.css' %}">
+    <link rel="icon" href="{% static 'img/LogoMasterbike.jpeg' %}">
+</head>
+<body>
+
+    {% include 'masterbikes/includes/header.html' %}
+
+    <main class="main">
+        <div class="container mt-5">
+            <h2 class="mb-4">Panel de Administración</h2>
+            
+            <ul class="nav nav-tabs" id="crudTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active text-dark" id="reservas-tab" data-bs-toggle="tab" data-bs-target="#reservas" type="button" role="tab" aria-controls="reservas" aria-selected="true">Reservas</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link text-dark" id="compras-tab" data-bs-toggle="tab" data-bs-target="#compras" type="button" role="tab" aria-controls="compras" aria-selected="false">Compras</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link text-dark" id="reparaciones-tab" data-bs-toggle="tab" data-bs-target="#reparaciones" type="button" role="tab" aria-controls="reparaciones" aria-selected="false">Reparaciones</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link text-dark" id="feedback-tab" data-bs-toggle="tab" data-bs-target="#feedback" type="button" role="tab" aria-controls="feedback" aria-selected="false">Feedback</button>
+                </li>
+            </ul>
+            <div class="tab-content" id="crudTabContent">
+                <div class="tab-pane fade show active" id="reservas" role="tabpanel" aria-labelledby="reservas-tab">
+                    <h3 class="mt-4">Reservas</h3>
+                    <div class="list-group mb-4">
+                        {% for reserva in reservas %}
+                        <div class="list-group-item">
+                            <div class="row g-0">
+                                <div class="col-md-4">
+                                    <img src="{{ reserva.bicicleta.imagen.url }}" class="img-fluid rounded-start bicicleta-img" alt="{{ reserva.bicicleta.nombre }}">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <p><strong>{{ reserva.bicicleta.nombre }}</strong> - {{ reserva.usuario.username }}</p>
+                                        <p>Estado: {{ reserva.estado }}</p>
+                                        <a href="{% url 'cambiar_estado_reserva' reserva.pk %}" class="btn btn-primary">Cambiar Estado</a>
+                                        <a href="{% url 'eliminar_reserva' reserva.pk %}" class="btn btn-danger">Eliminar</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="compras" role="tabpanel" aria-labelledby="compras-tab">
+                    <h3 class="mt-4">Compras</h3>
+                    <div class="list-group mb-4">
+                        {% for compra in compras %}
+                        <div class="list-group-item">
+                            <div class="row g-0">
+                                <div class="col-md-4">
+                                    <img src="{{ compra.bicicleta.imagen.url }}" class="img-fluid rounded-start bicicleta-img" alt="{{ compra.bicicleta.nombre }}">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <p><strong>{{ compra.bicicleta.nombre }}</strong> - {{ compra.usuario.username }}</p>
+                                        <p>Comprado el: {{ compra.fecha_compra|date:"d/m/Y" }}</p>
+                                        <p>Precio: ${{ compra.precio }}</p>
+                                        <a href="{% url 'eliminar_compra' compra.pk %}" class="btn btn-danger">Eliminar</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="reparaciones" role="tabpanel" aria-labelledby="reparaciones-tab">
+                    <h3 class="mt-4">Reparaciones</h3>
+                    <div class="list-group mb-4">
+                        {% for reparacion in reparaciones %}
+                        <div class="list-group-item">
+                            <div class="row g-0">
+                                <div class="col-md-4">
+                                    <img src="{{ reparacion.bicicleta.imagen.url }}" class="img-fluid rounded-start bicicleta-img" alt="{{ reparacion.bicicleta.nombre }}">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <p><strong>{{ reparacion.bicicleta.nombre }}</strong> - {{ reparacion.usuario.username }}</p>
+                                        <p>Estado: {{ reparacion.estado }}</p>
+                                        <a href="{% url 'marcar_seguimiento' reparacion.pk %}" class="btn btn-primary">Marcar Seguimiento</a>
+                                        <a href="{% url 'eliminar_reparacion' reparacion.pk %}" class="btn btn-danger">Eliminar</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="feedback" role="tabpanel" aria-labelledby="feedback-tab">
+                    <h3 class="mt-4">Feedback</h3>
+                    <div class="list-group mb-4">
+                        {% for feedback in feedbacks %}
+                        <div class="list-group-item">
+                            <div class="row g-0">
+                                <div class="col-md-4">
+                                    <img src="{{ feedback.usuario.profile.image.url }}" class="img-fluid rounded-start" alt="{{ feedback.usuario.username }}">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <p><strong>{{ feedback.usuario.username }}</strong></p>
+                                        <p>Comentario: {{ feedback.comentario }}</p>
+                                        <p>Calificación: {{ feedback.calificacion }}</p>
+                                        <a href="{% url 'eliminar_feedback' feedback.pk %}" class="btn btn-danger">Eliminar</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    {% include 'masterbikes/includes/footer.html' %}
+
+</body>
+</html>

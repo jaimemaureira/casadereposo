@@ -1,0 +1,54 @@
+<!-- masterbikes/templates/masterbikes/carrito.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MasterBikes - Carrito de Compras</title>
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/stylesIncludes.css' %}">
+    <link rel="icon" href="{% static 'Img/icono1.jpeg' %}">
+</head>
+<body>
+
+    {% include 'masterbikes/includes/header.html' %}
+
+    <main class="main">
+        <div class="container">
+            <h2>Carrito de Compras</h2>
+            {% if carrito.items.exists %}
+            <div class="row">
+                {% for item in carrito.items.all %}
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="{{ item.bicicleta.imagen.url }}" class="card-img-top bicicleta-img" alt="{{ item.bicicleta.nombre }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ item.bicicleta.nombre }}</h5>
+                            <p class="card-text">{{ item.bicicleta.descripcion|truncatewords:20 }}</p>
+                            <p class="card-text">Cantidad: {{ item.cantidad }}</p>
+                            <p class="card-text">Precio: ${{ item.bicicleta.precio }}</p>
+                            <p class="card-text">Subtotal: ${{ item.subtotal }}</p>
+                            <a href="{% url 'eliminar_del_carrito' item.id %}" class="btn btn-danger">Eliminar</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="text-center">
+                <h4>Total: ${{ total }}</h4>
+                <a href="{% url 'realizar_compra' %}" class="btn btn-success">Realizar Compra</a>
+            </div>
+            {% else %}
+            <p class="text-center">Tu carrito está vacío.</p>
+            {% endif %}
+        </div>
+    </main>
+
+    {% include 'masterbikes/includes/footer.html' %}
+
+</body>
+</html>

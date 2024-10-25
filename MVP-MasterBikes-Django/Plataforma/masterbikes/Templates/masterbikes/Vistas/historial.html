@@ -1,0 +1,81 @@
+<!-- masterbikes/templates/masterbikes/Vistas/historial_compras.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MasterBikes - Historial de Reservas</title>
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/stylesIncludes.css' %}">
+    <link rel="icon" href="{% static 'img/LogoMasterbike.jpeg' %}">
+</head>
+<body>
+
+    {% include 'masterbikes/includes/header.html' %}
+
+    
+    <main class="main">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h2>Historial de Reservas</h2>
+                    <div class="row">
+                        {% for reserva in reservas %}
+                        <div class="col-md-12 mb-4">
+                            <div class="card h-100">
+                                <div class="row g-0">
+                                    <div class="col-md-4">
+                                        <img src="{{ reserva.bicicleta.imagen.url }}" class="img-fluid rounded-start bicicleta-img" alt="{{ reserva.bicicleta.nombre }}">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{ reserva.bicicleta.nombre }}</h5>
+                                            <p class="card-text"><strong>Reservado el:</strong> {{ reserva.fecha_solicitud|date:"d/m/Y" }}</p>
+                                            <p class="card-text"><strong>Entrega el:</strong> {{ reserva.fecha_entrega|date:"d/m/Y" }}</p>
+                                            <p class="card-text"><strong>Estado:</strong> {{ reserva.estado }}</p>
+                                            <a href="{% url 'bicicleta_detalle_reservas' reserva.pk %}" class="btn btn-primary">Ver Detalles</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h2>Historial de Compras</h2>
+                    <div class="row">
+                        {% for compra in compras %}
+                        <div class="col-md-12 mb-4">
+                            <div class="card h-100">
+                                <div class="row g-0">
+                                    <div class="col-md-4">
+                                        <img src="{{ compra.bicicleta.imagen.url }}" class="img-fluid rounded-start bicicleta-img" alt="{{ compra.bicicleta.nombre }}">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{ compra.bicicleta.nombre }}</h5>
+                                            <p class="card-text"><strong>Comprado el:</strong> {{ compra.fecha_compra|date:"d/m/Y" }}</p>
+                                            <p class="card-text"><strong>Precio:</strong> ${{ compra.precio }}</p>
+                                            <a href="{% url 'bicicleta_detalle_compras' compra.pk %}" class="btn btn-primary">Ver Detalles</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+    {% include 'masterbikes/includes/footer.html' %}
+
+</body>
+</html>

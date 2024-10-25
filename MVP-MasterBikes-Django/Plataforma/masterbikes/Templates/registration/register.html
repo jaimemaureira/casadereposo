@@ -1,0 +1,19 @@
+<!-- register.html -->
+<form method="post" action="{% url 'registro' %}">
+  {% csrf_token %}
+  <div class="mb-3">
+      <label for="nombre" class="form-label">Nombre</label>
+      <input type="text" class="form-control register-input" id="nombre" name="nombre" required>
+  </div>
+  <div class="mb-3">
+      <label for="email" class="form-label">Correo Electrónico</label>
+      <input type="email" class="form-control register-input" id="email" name="email" required>
+  </div>
+  <div class="mb-3">
+      <label for="password" class="form-label">Contraseña</label>
+      <input type="password" class="form-control register-input" id="password" name="password" required>
+  </div>
+  <div class="text-center">
+      <button type="submit" class="custom-btn btn-1 register-form-btn">Registrarse</button>
+  </div>
+</form>

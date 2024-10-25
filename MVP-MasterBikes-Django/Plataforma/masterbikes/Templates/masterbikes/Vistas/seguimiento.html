@@ -1,0 +1,49 @@
+<!-- masterbikes/templates/masterbikes/Vistas/seguimiento.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MasterBikes - Seguimiento de Reparaciones</title>
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/stylesIncludes.css' %}">
+    <link rel="icon" href="{% static 'img/LogoMasterbike.jpeg' %}">
+</head>
+<body>
+
+    {% include 'masterbikes/includes/header.html' %}
+
+    <main class="main">
+        <div class="container">
+            <img src="{% static 'img/contacto.jpg' %}" class="banner-img" alt="Banner Reparaciones">
+            <h2>Seguimiento de Reparaciones</h2>
+            <div class="row">
+                {% for reparacion in reparaciones %}
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <img src="{{ reparacion.bicicleta.imagen.url }}" class="img-fluid w-100" alt="{{ reparacion.bicicleta.nombre }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ reparacion.bicicleta.nombre }}</h5>
+                            <p class="card-text">{{ reparacion.descripcion }}</p>
+                            <p class="card-text"><small class="text-muted">Solicitada el: {{ reparacion.fecha_solicitud|date:"d/m/Y" }}</small></p>
+                            {% if reparacion.fecha_completada %}
+                            <p class="card-text"><small class="text-muted">Completada el: {{ reparacion.fecha_completada|date:"d/m/Y" }}</small></p>
+                            {% else %}
+                            <p class="card-text"><small class="text-muted">Estado: En progreso</small></p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </main>
+
+    {% include 'masterbikes/includes/footer.html' %}
+
+</body>
+</html>

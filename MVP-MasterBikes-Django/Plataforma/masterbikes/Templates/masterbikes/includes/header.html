@@ -1,0 +1,187 @@
+{% load static %}
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg bg-black p">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'index' %}" id="enlace-index">
+            <div class="logo">
+                <img src="{% static 'Img/LogoMasterbike.jpeg' %}" alt="Logo" width="120" height="120" class="d-inline-block align-text-top">
+            </div>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item bg-bordeaux">
+                    <a class="nav-link active text-white" href="{% url 'index' %}">Inicio</a>
+                </li>
+                <li class="nav-item bg-bordeaux">
+                    <a class="nav-link text-white" href="{% url 'bicicletas' %}" id="enlace-bicicletas">Habitaciones</a>
+                </li>
+                <li class="nav-item bg-bordeaux">
+                    <a class="nav-link text-white" href="{% url 'reservas' %}" id="enlace-reservas">Reservas</a>
+                </li>
+                <li class="nav-item bg-bordeaux">
+                    <a class="nav-link text-white" href="{% url 'reparaciones' %}" id="enlace-reparaciones">Reparaciones</a>
+                </li>
+                <li class="nav-item bg-bordeaux">
+                    <a class="nav-link text-white" href="{% url 'seguimiento' %}" id="enlace-seguimiento">Seguimiento</a>
+                </li>
+                <li class="nav-item dropdown bg-bordeaux">
+                    <a class="nav-link text-white dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Otros</a>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="{% url 'verificacion_entrega' %}" id="enlace-verificacion_entrega">Verificación de Entrega</a></li>
+                        <li><a class="dropdown-item" href="{% url 'historial' %}" id="enlace-historial">Historial</a></li>  
+                        <li><a class="dropdown-item" href="{% url 'feedback_list' %}" id="enlace-feedback">Feedback</a></li>
+                    </ul>
+                </li>
+                {% if user.is_authenticated %}
+                <li class="nav-item dropdown bg-bordeaux">
+                    <a class="nav-link text-white dropdown-toggle" href="#unete" role="button" data-bs-toggle="dropdown" aria-expanded="false">Perfil</a>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#confirmLogoutModal">Cerrar sesión</a></li>
+                    </ul>
+                </li>
+                {% else %}
+                <li class="nav-item bg-bordeaux">
+                    <a class="nav-link text-white" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">Iniciar Sesión</a>
+                </li>
+                <li class="nav-item bg-bordeaux">
+                    <a class="nav-link text-white" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal2">Registrarse</a>
+                </li>
+                {% endif %}
+                {% if user.is_authenticated and user.is_staff %}
+                <li class="nav-item bg-bordeaux">
+                    <a class="nav-link text-white" href="{% url 'administracion' %}" id="enlace-enlace-administracion">Administración</a>
+                </li>
+
+                <li class="nav-item dropdown bg-bordeaux">
+                    <a class="nav-link text-white dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">♥</a>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="#" id="enlace-noticias_list">Lista Bicicleta</a></li>
+                        <li><a class="dropdown-item" href="#" id="enlace-sobreNosotros">Lista Imagenes</a></li>  
+                        <li><a class="dropdown-item" href="#" id="enlace-user_list">Lista Perfiles</a></li>
+                        <li><a class="dropdown-item" href="#" id="enlace-noticiero_list">Lista Reparaciones</a></li>
+                        <li><a class="dropdown-item" href="#" id="enlace-subscription_list">Lista Reservas</a></li>
+                        <li><a class="dropdown-item" href="#" id="enlace-manage_subscriptions">Feddback</a></li>
+                        <li><a class="dropdown-item" href="{% url 'crud' %}" id="enlace-crud">Crud</a></li>
+                    </ul>
+                </li>
+                {% endif %}
+            </ul>
+
+            <form class="d-flex search-form" role="search" method="get" action="{% url 'buscar_bicicleta' %}">
+                <div class="InputContainer">
+                    <input placeholder="¿Qué buscas?" id="input" class="input search-input" name="query" type="text" aria-label="Search">
+                </div>
+                <button class="custom-btn btn-1 search-button" type="submit">Buscar</button>
+            </form>
+            
+            {% if user.is_authenticated %}
+                <a href="{% url 'carrito' %}" class="CartBtnCustom">
+                    <span class="IconContainer">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512" fill="rgb(17, 17, 17)" class="cart">
+                            <path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 
+                            32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 
+                            53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 
+                            19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 
+                            0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H
+                            24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 
+                            0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z">
+                            </path>
+                        </svg>
+                    </span>
+                    <p class="text">Add to Cart</p>
+                </a>
+            {% endif %}
+        </div>
+    </div>
+</nav>
+
+<!-- Modal Iniciar Sesión -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content login-form-container">
+            <div class="modal-header">
+                <h5 class="modal-title login-title" id="exampleModalLabel">Iniciar Sesión</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form class="login-form" method="post" action="{% url 'login' %}">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Nombre de Usuario</label>
+                        <input type="text" class="form-control login-input" id="username" name="username" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Contraseña</label>
+                        <input type="password" class="form-control login-input" id="password" name="password" required>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="custom-btn btn-1 login-form-btn">Iniciar Sesión</button>
+                    </div>
+                </form>
+                <p class="text-center">O inicia sesión con:</p>
+                <div class="d-grid gap-2">
+                    <button class="btn btn-outline-danger login-social-btn" type="button">
+                        <span class="login-google-icon"></span> Google
+                    </button>
+                    <button class="btn btn-outline-primary login-social-btn" type="button">
+                        <span class="login-apple-icon"></span> iCloud
+                    </button>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="custom-btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de Registro -->
+<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content register-form-container">
+            <div class="modal-header">
+                <h5 class="modal-title register-title" id="exampleModalLabel">Registro</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                {% include 'registration/register.html' %}
+                <hr>
+                <p class="text-center">O registra con:</p>
+                <div class="d-grid gap-2">
+                    <button class="btn btn-outline-danger register-social-btn" type="button">
+                        <span class="register-google-icon"></span> Google
+                    </button>
+                    <button class="btn btn-outline-primary register-social-btn" type="button">
+                        <span class="register-apple-icon"></span> iCloud
+                    </button>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="custom-btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de Confirmación de Cerrar Sesión -->
+<div class="modal fade" id="confirmLogoutModal" tabindex="-1" aria-labelledby="confirmLogoutModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmLogoutModalLabel">Confirma el Cierre de Sesión</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>¿Estás seguro de que deseas cerrar sesión?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <a href="{% url 'logout' %}" class="btn btn-danger">Cerrar sesión</a>
+            </div>
+        </div>
+    </div>
+</div>
+

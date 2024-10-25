@@ -1,0 +1,39 @@
+<!-- masterbikes/templates/masterbikes/Vistas/bicicleta_detalle.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ bicicleta.nombre }} - "Villa Retro"</title>
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/stylesIncludes.css' %}">
+    <link rel="icon" href="{% static 'img/LogoMasterbike.jpeg' %}">
+</head>
+<body>
+
+    {% include 'masterbikes/includes/header.html' %}
+
+    <main class="main">
+        <div class="container">
+            <h2>Detalle de la Reserva</h2>
+            <div class="card">
+                <img src="{{ reserva.bicicleta.imagen.url }}" class="card-img-top bicicleta-img" alt="{{ reserva.bicicleta.nombre }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ reserva.bicicleta.nombre }}</h5>
+                    <p class="card-text"><strong>Descripción:</strong> {{ reserva.bicicleta.descripcion }}</p>
+                    <p class="card-text"><strong>Reservado el:</strong> {{ reserva.fecha_solicitud|date:"d/m/Y" }}</p>
+                    <p class="card-text"><strong>Entrega el:</strong> {{ reserva.fecha_entrega|date:"d/m/Y" }}</p>
+                    <p class="card-text"><strong>Estado:</strong> {{ reserva.estado }}</p>
+                </div>
+            </div>
+            <a href="{% url 'historial' %}" class="btn btn-secondary mt-3">Volver al Historial</a>
+        </div>
+    </main>
+    {% include 'masterbikes/includes/footer.html' %}
+
+</body>
+</html>

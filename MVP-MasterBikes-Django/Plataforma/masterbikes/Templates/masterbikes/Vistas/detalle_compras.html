@@ -1,0 +1,35 @@
+<!-- masterbikes/templates/masterbikes/Vistas/detalles_compras.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MasterBikes - Detalles de Compras</title>
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/stylesIncludes.css' %}">
+    <link rel="icon" href="{% static 'img/LogoMasterbike.jpeg' %}">
+</head>
+<body>
+
+    {% include 'masterbikes/includes/header.html' %}
+
+    <main class="main">
+        <div class="container">
+            <h2>Detalles de Compras</h2>
+            <div class="list-group mt-4">
+                <!-- Ejemplo de un detalle de compra -->
+                <a href="#" class="list-group-item list-group-item-action">Compra 1 - Bicicleta 1 - $500</a>
+                <a href="#" class="list-group-item list-group-item-action">Compra 2 - Bicicleta 2 - $600</a>
+                <a href="#" class="list-group-item list-group-item-action">Compra 3 - Bicicleta 3 - $700</a>
+            </div>
+        </div>
+    </main>
+
+    {% include 'masterbikes/includes/footer.html' %}
+
+</body>
+</html>

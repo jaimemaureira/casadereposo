@@ -1,0 +1,39 @@
+<!-- masterbikes/templates/masterbikes/Vistas/feedback_list.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>"Villa Retro" - Feedback</title>
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/stylesIncludes.css' %}">
+    <link rel="icon" href="{% static 'img/LogoMasterbike.jpeg' %}">
+</head>
+<body>
+
+    {% include 'masterbikes/includes/header.html' %}
+
+    <main class="main">
+        <div class="container">
+            <h2>Feedback de los Usuarios</h2>
+            <a href="{% url 'feedback_create' %}" class="btn btn-primary mb-3">Agregar Feedback</a>
+            <div class="list-group">
+                {% for feedback in feedbacks %}
+                <div class="list-group-item">
+                    <h5 class="mb-1">{{ feedback.usuario.username }}</h5>
+                    <p class="mb-1">{{ feedback.comentario }}</p>
+                    <small>Calificación: {{ feedback.calificacion }} - Fecha: {{ feedback.fecha|date:"d/m/Y" }}</small>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </main>
+
+    {% include 'masterbikes/includes/footer.html' %}
+
+</body>
+</html>

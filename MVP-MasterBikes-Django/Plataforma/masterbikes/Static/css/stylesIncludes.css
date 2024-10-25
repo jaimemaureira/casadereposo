@@ -1,0 +1,359 @@
+ 
+/* Estilos del encabezado */
+.logo img {
+  width: 100%; /* Ajusta el tamaño del logo para ser más adaptable */
+  height: auto;
+  max-width: 120px; /* Límite máximo para el tamaño del logo */
+}
+
+nav {
+  flex: 2;
+  text-align: center;
+}
+
+/* Estilos de búsqueda */
+.search-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: auto;
+}
+
+.search-button {
+  margin-left: 5px; /* Ajuste de margen entre el cuadro de búsqueda y el botón */
+}
+
+.InputContainer {
+  width: 100%;
+  max-width: 250px; /* Ajusta el tamaño máximo del contenedor de búsqueda */
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to bottom, rgb(227, 213, 255), rgb(255, 231, 231));
+  border-radius: 30px;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.075);
+}
+
+.input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  caret-color: rgb(255, 81, 0);
+  background-color: rgb(255, 255, 255);
+  border-radius: 30px;
+  padding-left: 15px;
+  letter-spacing: 0.8px;
+  color: rgb(19, 19, 19);
+  font-size: 13.4px;
+  transition: all 0.3s;
+}
+
+.input:hover {
+  background-color: #ffffffeb;
+}
+
+.input:focus {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.input::placeholder {
+  color: #b1b1b1;
+}
+
+/* Adicionales para mantener coherencia con otros estilos */
+.search-form .search-input {
+  background-color: transparent;
+  margin: 0;
+  padding: 0;
+  word-wrap: break-word;
+  text-align: center;
+  font-weight: bold;
+  font-family: 'Courier New';
+  max-width: 190px;
+  color: #000000;
+}
+
+.auth-links {
+  margin-right: 10px;
+}
+
+.auth-links a {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 10px;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex; /* Usa flexbox para alinear los elementos */
+  align-items: center; /* Alinea verticalmente los elementos */
+}
+
+nav ul li {
+  margin-right: 20px; /* Ajusta el espacio entre los elementos del menú */
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+nav ul li a:hover {
+  background-color: #b1b1b1; /* Color de fondo al pasar el cursor */
+  color: #fff; /* Color del texto al pasar el cursor */
+}
+
+
+
+/* Carro */
+.CartBtnCustom {
+  width: 150px;
+  height: 45px;
+  border-radius: 12px;
+  border: none;
+  background-color: rgb(255, 208, 0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition-duration: .5s;
+  overflow: hidden;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.103);
+  position: relative;
+  text-decoration: none; /* Remover subrayado del enlace */
+  margin-left: 10px; /* Ajuste de margen entre el cuadro de búsqueda y el botón */
+}
+
+.IconContainer {
+  position: absolute;
+  left: -60px;
+  width: 50px;
+  height: 50px;
+  background-color: transparent;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  z-index: 2;
+  transition-duration: .5s;
+}
+
+.icon {
+  border-radius: 1px;
+}
+
+.text {
+  height: 100%;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(17, 17, 17);
+  z-index: 1;
+  transition-duration: .5s;
+  font-size: 1.04em;
+  font-weight: 600;
+  margin: 0; /* Asegura que no haya márgenes adicionales */
+  text-decoration: none; /* Remover subrayado del texto */
+  margin-left: 20px; /* Ajusta este valor según sea necesario para mover el texto a la derecha */
+}
+
+.CartBtnCustom:hover .IconContainer {
+  transform: translateX(58px);
+  border-radius: 40px;
+  transition-duration: .5s;
+}
+
+.CartBtnCustom:hover .pretext {
+  transform: translate(10px, 0px);
+  transition-duration: .5s;
+}
+
+.CartBtnCustom:active {
+  transform: scale(0.95);
+  transition-duration: .5s;
+}
+
+/* Estilo para remover el subrayado en hover y active */
+.CartBtnCustom:hover {
+  text-decoration: none;
+}
+
+.CartBtnCustom:active {
+  text-decoration: none;
+}
+
+/* Media Query para ajuste de navegación en pantallas pequeñas */
+@media (max-width: 992px) {
+  .navbar-collapse {
+    flex-basis: 100%; /* Ajusta la base flexible para ocupar el espacio completo */
+  }
+  
+  .navbar-nav {
+    flex-direction: column; /* Cambia la dirección de los elementos a columnas */
+  }
+  
+  .nav-item {
+    margin-bottom: 10px; /* Ajusta el espacio entre los elementos del menú */
+  }
+}
+
+
+
+
+
+/* Estilos para el formulario de registro */
+.register-form-container {
+  width: 800px;
+  background-color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.register-title {
+  text-align: center;
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.register-form {
+  margin-bottom: 20px;
+}
+
+.register-input {
+  border-radius: 20px;
+  border: 1px solid #c0c0c0;
+  padding: 12px 15px;
+}
+
+.register-form-btn {
+  padding: 10px 15px;
+  border-radius: 20px;
+  border: 0;
+  outline: none;
+  background-color: teal;
+  color: white;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.register-form-btn:hover {
+  background-color: #006666;
+}
+
+.register-social-btn {
+  margin-top: 10px;
+  padding: 10px 0;
+  border-radius: 20px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.register-social-btn .fab {
+  margin-right: 10px;
+}
+
+
+
+
+
+/* Estilos para la tarjeta de perfil */
+.card-perfil {
+  width: 100%;
+  max-width: 600px; /* Ancho máximo recomendado para ajustarse en pantallas */
+  margin: auto; /* Centra la tarjeta horizontalmente */
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  background-color: #f9f9f9;
+  margin-top: 20px;
+}
+
+.card-perfil .card-header {
+  background-color: #4c4c4c; /* Color de fondo del encabezado */
+  color: #fff; /* Color del texto del encabezado */
+  padding: 10px;
+  text-align: center;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.card-perfil .card-body {
+  padding: 20px;
+}
+
+.card-perfil .form-group {
+  margin-bottom: 15px;
+}
+
+.card-perfil label {
+  font-weight: bold;
+}
+
+.card-perfil input.form-control {
+  background-color: #fff;
+  color: #495057;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  padding: 10px;
+}
+
+.card-perfil input.form-control[readonly] {
+  background-color: #f9f9f9;
+  border-color: transparent;
+}
+
+.card-perfil .col-form-label {
+  padding-top: 10px;
+}
+
+@media (max-width: 768px) {
+  .card-perfil {
+      padding: 10px;
+  }
+}
+
+
+
+
+.carrito-container {
+  background-color: #ffffff;
+  padding: 20px;
+  border: 1px solid #dddddd;
+  border-radius: 5px;
+}
+
+.carrito-titulo {
+  text-align: left;
+}
+
+.carrito-contenido {
+  margin-top: 20px;
+}
+
+.carrito-item {
+  margin-bottom: 10px;
+}
+
+.carrito-vacio {
+  color: #777777;
+}
+
+.carrito-btn-volver {
+  display: inline-block;
+  margin-top: 20px;
+}
